@@ -7,11 +7,20 @@ var pike = {
   maxCust: 65,
   cookCust: 6.3,
   custHour: function() {
-    return Math.floor(Math.random() * (65 - 23 + 1) + 23);
+    return Math.floor(Math.random() * (this.maxCust - this.minCust + 1) + this.minCust);
   },
   cookHour: function(){
-    return this.custHour() * this.cookCust;
+    return Math.ceil(this.custHour() * this.cookCust);
+  },
+  render: function(){
+    for (var i = 0; i < hours.length; i++){
+      var liEl = document.createElement('li');
+      liEl.textContent = hours[i] + ': ' + this.cookHour() + ' cookies';
+      var pikeUl = document.getElementById('pike');
+      pikeUl.appendChild(liEl);
+    }
   }
 }
+pike.render();
 console.log(pike.custHour());
 console.log(pike.cookHour());
