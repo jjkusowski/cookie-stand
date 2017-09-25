@@ -11,9 +11,8 @@ var pike = {
     return Math.floor(Math.random() * (this.maxCust - this.minCust + 1) + this.minCust);
   },
   cookHour: function(){
-    var temp = Math.ceil(this.custHour() * this.cookCust)
-    this.cookTotal+= temp;
-    return temp;
+    this.cookTotal+= Math.ceil(this.custHour() * this.cookCust);
+    return Math.ceil(this.custHour() * this.cookCust);
   },
   render: function(){
     for (var i = 0; i < hours.length; i++){
@@ -34,10 +33,12 @@ var seatac = {
   minCust: 3,
   maxCust: 24,
   cookCust: 1.2,
+  cookTotal: 0,
   custHour: function() {
     return Math.floor(Math.random() * (this.maxCust - this.minCust + 1) + this.minCust);
   },
   cookHour: function() {
+    this.cookTotal+= Math.ceil(this.custHour() * this.cookCust);
     return Math.ceil(this.custHour() * this.cookCust);
   },
   render: function() {
@@ -47,6 +48,10 @@ var seatac = {
       var seatacUl = document.getElementById('seatac');
       seatacUl.appendChild(liEl);
     }
+    liEl = document.createElement('li');
+    liEl.textContent = 'Total: ' + this.cookTotal + ' cookies';
+    var seatacUl = document.getElementById('seatac');
+    seatacUl.appendChild(liEl);
   }
 }
 seatac.render();
