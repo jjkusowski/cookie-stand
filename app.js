@@ -43,23 +43,33 @@ var seatac = {
   minCust: 3,
   maxCust: 24,
   cookCust: 1.2,
-  cookTotal: 0,
+  cookArray: [],
   custHour: function() {
     return Math.floor(Math.random() * (this.maxCust - this.minCust + 1) + this.minCust);
   },
-  cookHour: function() {
-    this.cookTotal+= Math.ceil(this.custHour() * this.cookCust);
+  cookHour: function(){
     return Math.ceil(this.custHour() * this.cookCust);
   },
-  render: function() {
+  cookTotal: function(){
+    var cookTotal = 0;
+    for (var i = 0; i < this.cookArray.length; i++){
+      cookTotal = cookTotal + this.cookArray[i];
+      console.log('cookTotal ' + i + ' ' + cookTotal);
+    }
+  return cookTotal
+  },
+  render: function(){
     for (var i = 0; i < hours.length; i++){
       var liEl = document.createElement('li');
-      liEl.textContent = hours[i] + ': ' + this.cookHour() + ' cookies';
+      var tempCookie = this.cookHour();
+      console.log(hours[i] + tempCookie);
+      liEl.textContent = hours[i] + ': ' + tempCookie + ' cookies';
+      this.cookArray.push(tempCookie);
       var seatacUl = document.getElementById('seatac');
       seatacUl.appendChild(liEl);
     }
     liEl = document.createElement('li');
-    liEl.textContent = 'Total: ' + this.cookTotal + ' cookies';
+    liEl.textContent = 'Total: ' + this.cookTotal() + ' cookies';
     var seatacUl = document.getElementById('seatac');
     seatacUl.appendChild(liEl);
   }
