@@ -6,23 +6,33 @@ var pike = {
   minCust: 23,
   maxCust: 65,
   cookCust: 6.3,
-  cookTotal: 0,
+  cookArray: [],
   custHour: function() {
     return Math.floor(Math.random() * (this.maxCust - this.minCust + 1) + this.minCust);
   },
   cookHour: function(){
-    this.cookTotal+= Math.ceil(this.custHour() * this.cookCust);
     return Math.ceil(this.custHour() * this.cookCust);
+  },
+  cookTotal: function(){
+    var cookTotal = 0;
+    for (var i = 0; i < this.cookArray.length; i++){
+      cookTotal = cookTotal + this.cookArray[i];
+      console.log('cookTotal ' + i + ' ' + cookTotal);
+    }
+  return cookTotal
   },
   render: function(){
     for (var i = 0; i < hours.length; i++){
       var liEl = document.createElement('li');
-      liEl.textContent = hours[i] + ': ' + this.cookHour() + ' cookies';
+      var tempCookie = this.cookHour();
+      console.log(hours[i] + tempCookie);
+      liEl.textContent = hours[i] + ': ' + tempCookie + ' cookies';
+      this.cookArray.push(tempCookie);
       var pikeUl = document.getElementById('pike');
       pikeUl.appendChild(liEl);
     }
     liEl = document.createElement('li');
-    liEl.textContent = 'Total: ' + this.cookTotal + ' cookies';
+    liEl.textContent = 'Total: ' + this.cookTotal() + ' cookies';
     var pikeUl = document.getElementById('pike');
     pikeUl.appendChild(liEl);
   }
