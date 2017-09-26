@@ -17,7 +17,6 @@ var pike = {
     var cookTotal = 0;
     for (var i = 0; i < this.cookArray.length; i++){
       cookTotal = cookTotal + this.cookArray[i];
-      console.log('cookTotal ' + i + ' ' + cookTotal);
     }
   return cookTotal
   },
@@ -25,7 +24,6 @@ var pike = {
     for (var i = 0; i < hours.length; i++){
       var liEl = document.createElement('li');
       var tempCookie = this.cookHour();
-      console.log(hours[i] + tempCookie);
       liEl.textContent = hours[i] + ': ' + tempCookie + ' cookies';
       this.cookArray.push(tempCookie);
       var pikeUl = document.getElementById('pike');
@@ -54,7 +52,6 @@ var seatac = {
     var cookTotal = 0;
     for (var i = 0; i < this.cookArray.length; i++){
       cookTotal = cookTotal + this.cookArray[i];
-      console.log('cookTotal ' + i + ' ' + cookTotal);
     }
   return cookTotal
   },
@@ -62,7 +59,6 @@ var seatac = {
     for (var i = 0; i < hours.length; i++){
       var liEl = document.createElement('li');
       var tempCookie = this.cookHour();
-      console.log(hours[i] + tempCookie);
       liEl.textContent = hours[i] + ': ' + tempCookie + ' cookies';
       this.cookArray.push(tempCookie);
       var seatacUl = document.getElementById('seatac');
@@ -91,7 +87,6 @@ var seaCenter = {
     var cookTotal = 0;
     for (var i = 0; i < this.cookArray.length; i++){
       cookTotal = cookTotal + this.cookArray[i];
-      console.log('cookTotal ' + i + ' ' + cookTotal);
     }
   return cookTotal
   },
@@ -99,7 +94,6 @@ var seaCenter = {
     for (var i = 0; i < hours.length; i++){
       var liEl = document.createElement('li');
       var tempCookie = this.cookHour();
-      console.log(hours[i] + tempCookie);
       liEl.textContent = hours[i] + ': ' + tempCookie + ' cookies';
       this.cookArray.push(tempCookie);
       var seaCenterUl = document.getElementById('seaCenter');
@@ -128,7 +122,6 @@ var capHill = {
     var cookTotal = 0;
     for (var i = 0; i < this.cookArray.length; i++){
       cookTotal = cookTotal + this.cookArray[i];
-      console.log('cookTotal ' + i + ' ' + cookTotal);
     }
   return cookTotal
   },
@@ -136,7 +129,6 @@ var capHill = {
     for (var i = 0; i < hours.length; i++){
       var liEl = document.createElement('li');
       var tempCookie = this.cookHour();
-      console.log(hours[i] + tempCookie);
       liEl.textContent = hours[i] + ': ' + tempCookie + ' cookies';
       this.cookArray.push(tempCookie);
       var capHillUl = document.getElementById('capHill');
@@ -165,7 +157,6 @@ var alki = {
     var cookTotal = 0;
     for (var i = 0; i < this.cookArray.length; i++){
       cookTotal = cookTotal + this.cookArray[i];
-      console.log('cookTotal ' + i + ' ' + cookTotal);
     }
   return cookTotal
   },
@@ -173,7 +164,6 @@ var alki = {
     for (var i = 0; i < hours.length; i++){
       var liEl = document.createElement('li');
       var tempCookie = this.cookHour();
-      console.log(hours[i] + tempCookie);
       liEl.textContent = hours[i] + ': ' + tempCookie + ' cookies';
       this.cookArray.push(tempCookie);
       var alkiUl = document.getElementById('alki');

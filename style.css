@@ -9,6 +9,17 @@ h1 {
 
 }
 
+p {
+  font-family: georgia, serif;
+  color: lightblue;
+}
+
+li {
+  font-family: arial, sans-serif;
+  color: darkblue;
+}
+
 #locations {
   background-color: salmon;
+
 }
