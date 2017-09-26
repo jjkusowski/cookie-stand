@@ -33,16 +33,23 @@ function Store(name, minCust, maxCust, cookCust) {
   this.render = function() {
     // create tr
     var trEl = document.createElement('tr');
-    // create all td's
+    // create td
     var tdEl = document.createElement('td');
+    // add store name data to td
     tdEl.textContent = this.name;
+    // add store name td to tr
     trEl.appendChild(tdEl);
+    // loop to create, add, and append hourly cookies to tr
     for (var i = 0; i < hours.length; i++) {
-      var tdEl = document.createElement('td');
-      // give td content (cookies for that hour)
+      tdEl = document.createElement('td');
       tdEl.textContent = this.cookHourArray[i];
       trEl.appendChild(tdEl);
-    }
+    };
+    // add total cookies for the store
+    tdEl = document.createElement('td');
+    tdEl.textContent = this.totalCook;
+    trEl.appendChild(tdEl);
+    // add tr to table
     cookieTable.appendChild(trEl);
   };
   this.calcCookArray();
