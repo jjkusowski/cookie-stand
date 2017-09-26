@@ -52,14 +52,60 @@ function Store(name, minCust, maxCust, cookCust) {
     // add tr to table
     cookieTable.appendChild(trEl);
   };
+
+
+
   this.calcCookArray();
   this.render();
 
   allStores.push(this);
 }
+//Add cookies per hour for all stores
+function hourStoreTotal() {
+  var grandTotal = 0;
+  var trEl = document.createElement('tr');
+  var tdEl = document.createElement('td');
+  tdEl.textContent = 'Totals';
+  trEl.appendChild(tdEl);
+  for (var i = 0; i < hours.length; i++) {
+    var hourTotal = 0;
+    for (var j = 0; j < allStores.length; j++) {
+      hourTotal = hourTotal + allStores[j].cookHourArray[i];
+    }
+    grandTotal += hourTotal;
+    var tdEl = document.createElement('td');
+    tdEl.textContent = hourTotal;
+    trEl.appendChild(tdEl);
+  }
+  var tdEl = document.createElement('td');
+  tdEl.textContent = grandTotal;
+  trEl.appendChild(tdEl);
+  cookieTable.appendChild(trEl);
+}
+// adds header rows to table
 
+function makeHeaderRow() {
+  // create tr
+  var trEl = document.createElement('tr');
+  // create th
+  var thEl = document.createElement('th');
+  // add space to td
+  thEl.textContent = ' ';
+  // add space th to tr
+  trEl.appendChild(thEl);
+  // loop to create, add, and append hours to tr
+  for (var i = 0; i < hours.length; i++) {
+    thEl = document.createElement('th');
+    thEl.textContent = hours[i];
+    trEl.appendChild(thEl);
+  }
+  thEl = document.createElement('th');
+  thEl.textContent = 'Daily Location Total';
+  trEl.appendChild(thEl);
+  cookieTable.appendChild(trEl);
+}
 
-
+makeHeaderRow();
 // Add stores
 new Store('1st and Pike', 23, 65, 6.3);
 new Store('Seatac Airport', 3, 24, 1.2);
@@ -67,6 +113,7 @@ new Store('Seattle Center', 11, 38, 3.7);
 new Store('Capitol Hill', 20, 38, 2.3);
 new Store('Alki', 2, 16, 4.6);
 
+hourStoreTotal();
 // var pike = {
 //   minCust: 23,
 //   maxCust: 65,
