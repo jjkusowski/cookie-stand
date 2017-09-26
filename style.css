@@ -1,5 +1,6 @@
 * {
-  /*background-color: salmon;*/
+  border: 1px solid black;
+  background-color: lightgray;
 
 }
 
@@ -11,7 +12,8 @@ h1 {
 
 p {
   font-family: georgia, serif;
-  color: lightblue;
+  color: purple
+  background-color: yellow;
 }
 
 li {
@@ -22,4 +24,8 @@ li {
 #locations {
   background-color: salmon;
 
+}
+
+#contact, #phone {
+  text-align: center;
 }
