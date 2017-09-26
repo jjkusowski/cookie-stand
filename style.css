@@ -1,0 +1,31 @@
+* {
+  border: 1px solid black;
+  background-color: lightgray;
+
+}
+
+h1 {
+  font-family: 'Wendy One', serif;
+  color: blue;
+
+}
+
+p {
+  font-family: georgia, serif;
+  color: purple
+  background-color: yellow;
+}
+
+li {
+  font-family: arial, sans-serif;
+  color: darkblue;
+}
+
+#locations {
+  background-color: salmon;
+
+}
+
+#contact, #phone {
+  text-align: center;
+}
