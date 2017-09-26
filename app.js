@@ -16,6 +16,7 @@ function Store(name, minCust, maxCust, cookCust) {
   this.maxCust = maxCust;
   this.cookCust = cookCust;
   this.cookHourArray = [];
+  this.totalCook = 0;
   this.calcCookHour = function() {
     return Math.ceil((Math.floor(Math.random() * (this.maxCust - this.minCust + 1) + this.minCust)) * this.cookCust);
   };
@@ -23,11 +24,25 @@ function Store(name, minCust, maxCust, cookCust) {
   this.calcCookArray = function() {
     for (var i = 0; i < hours.length; i++) {
       var temp = this.calcCookHour();
-      console.log('cookies for one hour at ' + this.name + ' is :' + temp);
+      // console.log('cookies for one hour at ' + this.name + ' is :' + temp);
       this.cookHourArray.push(temp);
+      this.totalCook += temp;
     }
   };
+  this.render = function() {
+    // create tr
+    var trEl = document.createElement('tr');
+    // create all td's
+    for (var i = 0; i < hours.length; i++) {
+      var tdEl = document.createElement('td');
+      // give td content (cookies for that hour)
+      tdEl.textContent = this.cookHourArray[i];
+      trEl.appendChild(tdEl);
+    }
+    cookieTable.appendChild(trEl);
+  };
   this.calcCookArray();
+  this.render();
 
   allStores.push(this);
 }
@@ -37,6 +52,9 @@ function Store(name, minCust, maxCust, cookCust) {
 // Add stores
 new Store('1st and Pike', 23, 65, 6.3);
 new Store('Seatac Airport', 3, 24, 1.2);
+new Store('Seattle Center', 11, 38, 3.7);
+new Store('Capitol Hill', 20, 38, 2.3);
+new Store('Alki', 2, 16, 4.6);
 
 // var pike = {
 //   minCust: 23,
