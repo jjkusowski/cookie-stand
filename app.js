@@ -17,6 +17,7 @@ function Store(name, minCust, maxCust, cookCust) {
   this.cookCust = cookCust;
   this.cookHourArray = [];
   this.totalCook = 0;
+  // calculate number of cookies for an hour via product of random number between the min and max customer rate and cookies per customer
   this.calcCookHour = function() {
     return Math.ceil((Math.floor(Math.random() * (this.maxCust - this.minCust + 1) + this.minCust)) * this.cookCust);
   };
@@ -33,6 +34,9 @@ function Store(name, minCust, maxCust, cookCust) {
     // create tr
     var trEl = document.createElement('tr');
     // create all td's
+    var tdEl = document.createElement('td');
+    tdEl.textContent = this.name;
+    trEl.appendChild(tdEl);
     for (var i = 0; i < hours.length; i++) {
       var tdEl = document.createElement('td');
       // give td content (cookies for that hour)
