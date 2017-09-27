@@ -18,45 +18,47 @@ function Store(name, minCust, maxCust, cookCust) {
   this.cookCust = cookCust;
   this.cookHourArray = [];
   this.totalCook = 0;
-  // calculate number of cookies for an hour via product of random number between the min and max customer rate and cookies per customer
-  this.calcCookHour = function() {
-    return Math.ceil((Math.floor(Math.random() * (this.maxCust - this.minCust + 1) + this.minCust)) * this.cookCust);
-  };
-
-  this.calcCookArray = function() {
-    for (var i = 0; i < hours.length; i++) {
-      var temp = this.calcCookHour();
-      this.cookHourArray.push(temp);
-      this.totalCook += temp;
-    }
-  };
-  this.render = function() {
-    // create tr
-    var trEl = document.createElement('tr');
-    // create td
-    var tdEl = document.createElement('td');
-    // add store name data to td
-    tdEl.textContent = this.name;
-    // add store name td to tr
-    trEl.appendChild(tdEl);
-    // loop to create, add, and append hourly cookies to tr
-    for (var i = 0; i < hours.length; i++) {
-      tdEl = document.createElement('td');
-      tdEl.textContent = this.cookHourArray[i];
-      trEl.appendChild(tdEl);
-    };
-    // add total cookies for the store
-    tdEl = document.createElement('td');
-    tdEl.textContent = this.totalCook;
-    trEl.appendChild(tdEl);
-    // add tr to table
-    cookieTable.appendChild(trEl);
-  };
-
   this.calcCookArray();
-  this.render();
+  // this.render();
 
   allStores.push(this);
+}
+
+// calculate number of cookies for an hour via product of random number between the min and max customer rate and cookies per customer
+Store.prototype.calcCookHour = function() {
+  return Math.ceil((Math.floor(Math.random() * (this.maxCust - this.minCust + 1) + this.minCust)) * this.cookCust);
+}
+
+Store.prototype.calcCookArray = function() {
+  for (var i = 0; i < hours.length; i++) {
+    var temp = this.calcCookHour();
+    this.cookHourArray.push(temp);
+    this.totalCook += temp;
+  }
+}
+
+// Render prototype for Store objects
+Store.prototype.render = function() {
+  // create tr
+  var trEl = document.createElement('tr');
+  // create td
+  var tdEl = document.createElement('td');
+  // add store name data to td
+  tdEl.textContent = this.name;
+  // add store name td to tr
+  trEl.appendChild(tdEl);
+  // loop to create, add, and append hourly cookies to tr
+  for (var i = 0; i < hours.length; i++) {
+    tdEl = document.createElement('td');
+    tdEl.textContent = this.cookHourArray[i];
+    trEl.appendChild(tdEl);
+  };
+  // add total cookies for the store
+  tdEl = document.createElement('td');
+  tdEl.textContent = this.totalCook;
+  trEl.appendChild(tdEl);
+  // add tr to table
+  cookieTable.appendChild(trEl);
 }
 //Add cookies per hour for all stores
 function hourStoreTotal() {
@@ -101,6 +103,15 @@ function makeHeaderRow() {
   trEl.appendChild(thEl);
   cookieTable.appendChild(trEl);
 }
+// Function to render all
+function renderAll() {
+  makeHeaderRow();
+  for (var i = 0; i < allStores.length; i++) {
+    allStores[i].render();
+  }
+  hourStoreTotal();
+}
+
 // Event handler for store submission
 function handleStoreSubmit(event){
   event.preventDefault();
@@ -113,7 +124,16 @@ function handleStoreSubmit(event){
   var newMax = parseInt(event.target.max.value);
   var newRate = parseInt(event.target.rate.value);
 
+  cookieTable.innerHTML = '';
+  // makeHeaderRow();
+  // new Store('1st and Pike', 23, 65, 6.3);
+  // new Store('Seatac Airport', 3, 24, 1.2);
+  // new Store('Seattle Center', 11, 38, 3.7);
+  // new Store('Capitol Hill', 20, 38, 2.3);
+  // new Store('Alki', 2, 16, 4.6);
   new Store(newStore, newMin, newMax, newRate);
+  // hourStoreTotal();
+  renderAll();
 
 }
 
@@ -121,7 +141,7 @@ function handleStoreSubmit(event){
 newStoreForm.addEventListener('submit', handleStoreSubmit);
 
 
-makeHeaderRow();
+// makeHeaderRow();
 // Add stores
 new Store('1st and Pike', 23, 65, 6.3);
 new Store('Seatac Airport', 3, 24, 1.2);
@@ -129,4 +149,5 @@ new Store('Seattle Center', 11, 38, 3.7);
 new Store('Capitol Hill', 20, 38, 2.3);
 new Store('Alki', 2, 16, 4.6);
 
-hourStoreTotal();
+// hourStoreTotal();
+renderAll();
