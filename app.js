@@ -19,7 +19,6 @@ function Store(name, minCust, maxCust, cookCust) {
   this.cookHourArray = [];
   this.totalCook = 0;
   this.calcCookArray();
-  // this.render();
 
   allStores.push(this);
 }
@@ -134,11 +133,10 @@ function handleStoreSubmit(event){
   event.target.max.value = null;
   event.target.rate.value = null;
 
-  // clear the table
+  // clear the table with old info
   cookieTable.innerHTML = '';
-  // re-render the entire table
+  // re-render the entire table with new info
   renderAll();
-
 }
 
 // Event listener for Submit button
