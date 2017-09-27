@@ -81,7 +81,6 @@ function hourStoreTotal() {
   cookieTable.appendChild(trEl);
 }
 // adds header rows to table
-
 function makeHeaderRow() {
   // create tr
   var trEl = document.createElement('tr');
@@ -102,22 +101,24 @@ function makeHeaderRow() {
   trEl.appendChild(thEl);
   cookieTable.appendChild(trEl);
 }
-
+// Event handler for store submission
 function handleStoreSubmit(event){
   event.preventDefault();
   if (!event.target.which.value || !event.target.min.value || !event.target.max.value || !event.target.rate.value) {
     return alert('Fields cannot be empty!');
-
+    console.log(event.target.which.value);
+  }
   var newStore = event.target.which.value;
   var newMin = parseInt(event.target.min.value);
   var newMax = parseInt(event.target.max.value);
   var newRate = parseInt(event.target.rate.value);
 
   new Store(newStore, newMin, newMax, newRate);
-  }
+
 }
 
-
+// Event listener for Submit button
+newStoreForm.addEventListener('submit', handleStoreSubmit);
 
 
 makeHeaderRow();
