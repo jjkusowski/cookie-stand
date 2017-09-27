@@ -8,6 +8,30 @@
   <body>
     <h1>Cookies sold by hour by store</h1>
     <table id="cookies"></table>
+
+    <h2> Add a new store here.</h2>
+
+    <form id="new-store">
+      <fieldset>
+          <legend>New Store Submission Form</legend>
+
+          <label for="name">Store Name</label>
+          <input name="name" type="text" />
+
+          <label for="minCust">Minimum Customers Per Hour</label>
+          <input name="minCust" type="number"/>
+
+          <label for="maxCust">Maximum Customers Per Hour</label>
+          <input name="maxCust" type="number"/>
+
+          <label for="cookCust">Cookies per Customer</label>
+          <input name="cookCust" type="number"/>
+
+          <button type="submit">Add a store<button>
+      </fieldset>
+    </form>
+
+
   </body>
   <script type="text/javascript" src="app.js">
 
