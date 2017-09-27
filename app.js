@@ -115,24 +115,28 @@ function renderAll() {
 // Event handler for store submission
 function handleStoreSubmit(event){
   event.preventDefault();
+  // check for blank cells
   if (!event.target.which.value || !event.target.min.value || !event.target.max.value || !event.target.rate.value) {
     return alert('Fields cannot be empty!');
     console.log(event.target.which.value);
   }
+  // give submitted info shorter names and change strings to integers for the number values
   var newStore = event.target.which.value;
   var newMin = parseInt(event.target.min.value);
   var newMax = parseInt(event.target.max.value);
   var newRate = parseInt(event.target.rate.value);
 
-  cookieTable.innerHTML = '';
-  // makeHeaderRow();
-  // new Store('1st and Pike', 23, 65, 6.3);
-  // new Store('Seatac Airport', 3, 24, 1.2);
-  // new Store('Seattle Center', 11, 38, 3.7);
-  // new Store('Capitol Hill', 20, 38, 2.3);
-  // new Store('Alki', 2, 16, 4.6);
+  // create a new store with the submitted values
   new Store(newStore, newMin, newMax, newRate);
-  // hourStoreTotal();
+  // clear the form
+  event.target.which.value = null;
+  event.target.min.value = null;
+  event.target.max.value = null;
+  event.target.rate.value = null;
+
+  // clear the table
+  cookieTable.innerHTML = '';
+  // re-render the entire table
   renderAll();
 
 }
@@ -140,8 +144,6 @@ function handleStoreSubmit(event){
 // Event listener for Submit button
 newStoreForm.addEventListener('submit', handleStoreSubmit);
 
-
-// makeHeaderRow();
 // Add stores
 new Store('1st and Pike', 23, 65, 6.3);
 new Store('Seatac Airport', 3, 24, 1.2);
@@ -149,5 +151,4 @@ new Store('Seattle Center', 11, 38, 3.7);
 new Store('Capitol Hill', 20, 38, 2.3);
 new Store('Alki', 2, 16, 4.6);
 
-// hourStoreTotal();
 renderAll();
