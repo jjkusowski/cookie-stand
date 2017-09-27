@@ -6,8 +6,9 @@ var hours = ['6 am', '7 am', '8 am', '9 am', '10 am', '11 am', '12 pm', '1 pm', 
 //This array will hold all constructed store objects
 var allStores = [];
 
-// Gives access to the table on the DOM
+// Gives access to the DOM
 var cookieTable = document.getElementById('cookies');
+var newStoreForm = document.getElementById("new-store");
 
 // Store constructor function
 function Store(name, minCust, maxCust, cookCust) {
@@ -101,6 +102,23 @@ function makeHeaderRow() {
   trEl.appendChild(thEl);
   cookieTable.appendChild(trEl);
 }
+
+function handleStoreSubmit(event){
+  event.preventDefault();
+  if (!event.target.which.value || !event.target.min.value || !event.target.max.value || !event.target.rate.value) {
+    return alert('Fields cannot be empty!');
+
+  var newStore = event.target.which.value;
+  var newMin = parseInt(event.target.min.value);
+  var newMax = parseInt(event.target.max.value);
+  var newRate = parseInt(event.target.rate.value);
+
+  new Store(newStore, newMin, newMax, newRate);
+  }
+}
+
+
+
 
 makeHeaderRow();
 // Add stores
