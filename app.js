@@ -123,7 +123,7 @@ function handleStoreSubmit(event){
   var newStore = event.target.which.value;
   var newMin = parseInt(event.target.min.value);
   var newMax = parseInt(event.target.max.value);
-  var newRate = parseInt(event.target.rate.value);
+  var newRate = parseFloat(event.target.rate.value);
 
   // create a new store with the submitted values
   new Store(newStore, newMin, newMax, newRate);
