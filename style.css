@@ -4,23 +4,67 @@
 
 }
 
-h1 {
-  font-family: 'Wendy One', serif;
-  color: blue;
-
+body {
+  width: 960px;
+}
+img.logo {
+  width: 300px;
+  height: auto;
+  display: block;
+  margin: 0px auto;
 }
 
+img.small {
+  width: 300px;
+  margin: 7px;
+}
+img.large {
+  width: 960px;
+}
+
+h1 {
+  font-family: 'Wendy One', serif;
+  color: #1f5fad;
+  text-align: center;
+
+}
+nav {
+  width: 400px;
+  margin: 0px auto;
+}
+
+nav li {
+  width: 100px;
+  display: inline;
+  padding: 5px;
+
+
+}
 p {
   font-family: georgia, serif;
   color: purple
   background-color: yellow;
+  width: 700px;
+  margin: 10px 130px;
 }
-
 li {
-  font-family: arial, sans-serif;
-  color: darkblue;
+  list-style-type: none;
+  border: 1px solid green;
+
 }
 
+/*section>ul>li {
+  display: inline;
+}
+section li {
+  width: 100px;
+}*/
+.location {
+  width: 150px;
+  /*margin: 0px auto;*/
+  float: left;
+  border: 1px solid red;
+}
 
 table {
   border: 4px solid black;
