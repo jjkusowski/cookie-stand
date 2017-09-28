@@ -26,7 +26,7 @@ function Store(name, minCust, maxCust, cookCust) {
 // calculate number of cookies for an hour via product of random number between the min and max customer rate and cookies per customer
 Store.prototype.calcCookHour = function() {
   return Math.ceil((Math.floor(Math.random() * (this.maxCust - this.minCust + 1) + this.minCust)) * this.cookCust);
-}
+};
 
 Store.prototype.calcCookArray = function() {
   for (var i = 0; i < hours.length; i++) {
@@ -34,7 +34,7 @@ Store.prototype.calcCookArray = function() {
     this.cookHourArray.push(temp);
     this.totalCook += temp;
   }
-}
+};
 
 // Render prototype for Store objects
 Store.prototype.render = function() {
@@ -51,14 +51,14 @@ Store.prototype.render = function() {
     tdEl = document.createElement('td');
     tdEl.textContent = this.cookHourArray[i];
     trEl.appendChild(tdEl);
-  };
+  }
   // add total cookies for the store
   tdEl = document.createElement('td');
   tdEl.textContent = this.totalCook;
   trEl.appendChild(tdEl);
   // add tr to table
   cookieTable.appendChild(trEl);
-}
+};
 //Add cookies per hour for all stores
 function hourStoreTotal() {
   var grandTotal = 0;
@@ -72,11 +72,11 @@ function hourStoreTotal() {
       hourTotal = hourTotal + allStores[j].cookHourArray[i];
     }
     grandTotal += hourTotal;
-    var tdEl = document.createElement('td');
+    tdEl = document.createElement('td');
     tdEl.textContent = hourTotal;
     trEl.appendChild(tdEl);
   }
-  var tdEl = document.createElement('td');
+  tdEl = document.createElement('td');
   tdEl.textContent = grandTotal;
   trEl.appendChild(tdEl);
   cookieTable.appendChild(trEl);
@@ -117,7 +117,6 @@ function handleStoreSubmit(event){
   // check for blank cells
   if (!event.target.which.value || !event.target.min.value || !event.target.max.value || !event.target.rate.value) {
     return alert('Fields cannot be empty!');
-    console.log(event.target.which.value);
   }
   // give submitted info shorter names and change strings to integers for the number values
   var newStore = event.target.which.value;
