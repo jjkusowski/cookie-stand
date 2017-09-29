@@ -47,23 +47,19 @@ p {
   width: 700px;
   margin: 10px 130px;
 }
-li {
+section li {
   list-style-type: none;
   border: 1px solid green;
+  list-style: none;
 
 }
 
-/*section>ul>li {
-  display: inline;
-}
-section li {
+div {
   width: 100px;
-}*/
-.location {
-  width: 150px;
   /*margin: 0px auto;*/
-  float: left;
+  /*float: left;*/
   border: 1px solid red;
+  display: inline;
 }
 
 table {
